@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: docanalyzer-ai
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn src.api:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        value: gemini-3.5-flash-lite
+      - key: FALLBACK_LLM_MODEL
+        value: gemini-3.6-flash
+      - key: TOP_K
+        value: "8"
