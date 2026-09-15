@@ -8,7 +8,6 @@ from bs4 import BeautifulSoup
 from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 
 from src.config import (
@@ -124,10 +123,38 @@ def build_and_save_index(
     target_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"[*] Initializing embedding model: '{embedding_model_name}'...")
-    embeddings = HuggingFaceEmbeddings(model_name=embedding_model_name)
+    if "gemini" in embedding_model_name.lower() or embedding_model_name.startswith("models/"):
+        from langchain_google_genai import GoogleGenerativeAIEmbeddings
+        from src.config import gemini_key, google_key
+        embeddings = GoogleGenerativeAIEmbeddings(
+            model=embedding_model_name,
+            google_api_key=gemini_key or google_key,
+        )
+    else:
+        from langchain_huggingface import HuggingFaceEmbeddings
+        embeddings = HuggingFaceEmbeddings(model_name=embedding_model_name)
 
-    print(f"[*] Building FAISS vector store with {len(chunks)} total chunks...")
-    vector_db = FAISS.from_documents(chunks, embeddings)
+    batch_size = 5
+    vector_db = None
+    print(f"[*] Building FAISS vector store with {len(chunks)} total chunks (batches of {batch_size})...")
+    for i in range(0, len(chunks), batch_size):
+        batch = chunks[i : i + batch_size]
+        print(f"  -> Embedding chunks {i + 1} to {min(i + batch_size, len(chunks))} of {len(chunks)}...")
+        for attempt in range(1, 5):
+            try:
+                if vector_db is None:
+                    vector_db = FAISS.from_documents(batch, embeddings)
+                else:
+                    vector_db.add_documents(batch)
+                break
+            except Exception as e:
+                if attempt == 4:
+                    raise e
+                err_str = str(e)
+                wait_time = 22 if ("429" in err_str or "RESOURCE_EXHAUSTED" in err_str) else attempt * 3
+                print(f"     [!] Notice (attempt {attempt}/4): {err_str[:100]}... Cooling down for {wait_time}s...")
+                time.sleep(wait_time)
+        time.sleep(0.5)
 
     print(f"[*] Saving FAISS index to '{target_dir}'...")
     vector_db.save_local(str(target_dir))
@@ -164,6 +191,10 @@ def run_ingestion(
 
     elapsed = time.time() - start_time
     print(f"Done! Unified ingestion completed in {elapsed:.2f} seconds.")
+
+
+# Alias for backward compatibility / automated fallback
+build_vector_store = run_ingestion
 
 
 if __name__ == "__main__":

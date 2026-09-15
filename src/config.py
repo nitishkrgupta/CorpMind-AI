@@ -20,7 +20,7 @@ elif google_key and not gemini_key:
 # Settings
 DOCUMENTS_DIR = BASE_DIR / os.getenv("DOCUMENTS_DIR", "documents")
 VECTOR_DB_DIR = BASE_DIR / os.getenv("VECTOR_DB_DIR", "data/faiss_index")
-EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-miniLM-L6-V2")
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "models/gemini-embedding-001")
 LLM_MODEL = os.getenv("LLM_MODEL", "gemini-3.5-flash-lite")
 FALLBACK_LLM_MODEL = os.getenv("FALLBACK_LLM_MODEL", "gemini-3.6-flash")
 CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "800"))

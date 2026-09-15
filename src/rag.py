@@ -3,7 +3,6 @@ from pathlib import Path
 from typing import Dict, Any, List, Optional
 
 from langchain_community.vectorstores import FAISS
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -76,7 +75,16 @@ class RAGService:
                 )
 
         print(f"[*] Loading embeddings ({self.embedding_model_name})...")
-        self.embeddings = HuggingFaceEmbeddings(model_name=self.embedding_model_name)
+        if "gemini" in self.embedding_model_name.lower() or self.embedding_model_name.startswith("models/"):
+            from langchain_google_genai import GoogleGenerativeAIEmbeddings
+            from src.config import gemini_key, google_key
+            self.embeddings = GoogleGenerativeAIEmbeddings(
+                model=self.embedding_model_name,
+                google_api_key=gemini_key or google_key,
+            )
+        else:
+            from langchain_huggingface import HuggingFaceEmbeddings
+            self.embeddings = HuggingFaceEmbeddings(model_name=self.embedding_model_name)
 
         print(f"[*] Loading persistent FAISS index from '{self.vector_db_dir}'...")
         self.vector_db = FAISS.load_local(
