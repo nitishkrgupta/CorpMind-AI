@@ -87,8 +87,9 @@ python -m src.ingest
 ```bash
 python app.py
 ```
-- **Corporate Demo Portal & Embedded Widget**: `http://localhost:8000` (or `/demo`)
-- **Full-Screen Chat Workspace**: `http://localhost:8000/chat`
+- **Corporate Demo Portal (with Floating Widget)**: http://localhost:8000
+- **Full-Screen Chat Dashboard**: http://localhost:8000/chat
+- **Interactive Swagger Docs**: http://localhost:8000/docs
 
 ---
 
@@ -107,7 +108,7 @@ python app.py
 1. On Render Dashboard, click **New +** -> **Web Service**.
 2. Connect your GitHub repository.
 3. Configure the following settings:
-   - **Name**: `docanalyzer-ai` (or your chosen name)
+   - **Name**: `tech-industries-ai` (or your chosen name)
    - **Region**: Oregon (or your preferred region)
    - **Branch**: `main`
    - **Runtime**: `Python 3`
@@ -125,13 +126,13 @@ python app.py
 
 ## 🔌 Embedding the Chatbot on Your Website
 
-Once deployed on Render (e.g. `https://docanalyzer-ai.onrender.com`), add this snippet right before `</body>` on any webpage:
+Once deployed on Render (e.g. `https://tech-industries-ai.onrender.com`), add this snippet right before `</body>` on any webpage:
 
 ```html
 <script 
-  src="https://docanalyzer-ai.onrender.com/static/widget.js" 
-  data-api-url="https://docanalyzer-ai.onrender.com"
-  data-title="Company Assistant"
+  src="https://tech-industries-ai.onrender.com/static/widget.js" 
+  data-api-url="https://tech-industries-ai.onrender.com"
+  data-title="Tech Industries Assistant"
   data-greeting="Hello! Welcome to Tech Industries. How can I assist you today?">
 </script>
 ```

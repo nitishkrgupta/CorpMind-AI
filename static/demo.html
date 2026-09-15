@@ -3,24 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tech Industries (TIPL) - Corporate Portal & Knowledge Assistant</title>
+  <title>Tech Industries - Corporate Demo Portal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #1d4ed8;
-      --primary-hover: #1e40af;
-      --primary-light: #eff6ff;
-      --accent: #f59e0b;
-      --dark-nav: #0f172a;
-      --text: #1e293b;
-      --text-muted: #64748b;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --navy: #0f172a;
+      --slate: #475569;
       --bg: #f8fafc;
       --card-bg: #ffffff;
       --border: #e2e8f0;
-      --radius: 12px;
-      --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
     }
 
     * {
@@ -31,155 +26,148 @@
     }
 
     body {
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      background: var(--bg);
+      color: #1e293b;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Navigation Bar */
     nav {
-      background: var(--dark-nav);
+      background: var(--navy);
       color: white;
-      padding: 14px 36px;
+      padding: 16px 36px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    .nav-brand {
+    nav .brand-container {
       display: flex;
       align-items: center;
       gap: 12px;
-      text-decoration: none;
+    }
+
+    nav .brand-logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
       color: white;
-    }
-
-    .brand-badge {
-      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-weight: 800;
-      font-size: 0.95rem;
-      padding: 6px 12px;
-      border-radius: 8px;
-      letter-spacing: 0.5px;
+      font-size: 1.1rem;
+      letter-spacing: -0.5px;
     }
 
-    .brand-text h2 {
-      font-size: 1.15rem;
+    nav .brand-text {
       font-weight: 700;
-      line-height: 1.2;
+      font-size: 1.25rem;
+      letter-spacing: -0.5px;
+      color: #ffffff;
     }
 
-    .brand-text span {
+    nav .brand-sub {
       font-size: 0.75rem;
       color: #94a3b8;
       font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .nav-links {
+    nav ul {
       list-style: none;
       display: flex;
+      gap: 24px;
       align-items: center;
-      gap: 22px;
     }
 
-    .nav-links a {
+    nav a {
       color: #cbd5e1;
       text-decoration: none;
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       font-weight: 500;
       transition: color 0.2s;
     }
 
-    .nav-links a:hover {
+    nav a:hover {
       color: #ffffff;
     }
 
-    .nav-btn-chat {
-      background: #2563eb;
-      color: white !important;
-      padding: 8px 16px;
+    nav .nav-btn {
+      background: var(--primary);
+      color: white;
+      padding: 8px 18px;
       border-radius: 8px;
-      font-weight: 600 !important;
-      transition: all 0.2s !important;
+      font-weight: 600;
+      transition: all 0.2s;
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
 
-    .nav-btn-chat:hover {
-      background: #1d4ed8 !important;
+    nav .nav-btn:hover {
+      background: var(--primary-hover);
       transform: translateY(-1px);
     }
 
-    /* Hero Section */
     .hero {
-      background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
-      padding: 70px 24px 60px;
+      padding: 70px 32px 60px;
       text-align: center;
+      background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
       border-bottom: 1px solid var(--border);
     }
 
-    .hero-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--primary-light);
-      border: 1px solid #bfdbfe;
+    .badge {
+      display: inline-block;
+      background: #eff6ff;
       color: var(--primary);
       padding: 6px 14px;
-      border-radius: 24px;
+      border-radius: 20px;
       font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
+      border: 1px solid #bfdbfe;
     }
 
     .hero h1 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: #0f172a;
-      letter-spacing: -0.8px;
-      max-width: 860px;
-      margin: 0 auto 18px;
-      line-height: 1.2;
+      font-size: 2.75rem;
+      margin-bottom: 16px;
+      color: var(--navy);
+      letter-spacing: -1px;
     }
 
     .hero p {
       font-size: 1.15rem;
-      color: var(--text-muted);
+      color: var(--slate);
       max-width: 720px;
-      margin: 0 auto 32px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
     }
 
     .hero-actions {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 14px;
-      margin-bottom: 24px;
-    }
-
-    .btn {
-      padding: 12px 24px;
-      border-radius: 10px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s;
-      border: none;
+      margin-top: 10px;
     }
 
     .btn-primary {
       background: var(--primary);
       color: white;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1rem;
       box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+      transition: all 0.2s;
     }
 
     .btn-primary:hover {
@@ -189,370 +177,210 @@
 
     .btn-secondary {
       background: white;
-      color: var(--text);
+      color: var(--navy);
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1rem;
       border: 1px solid var(--border);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      transition: all 0.2s;
     }
 
     .btn-secondary:hover {
       background: #f8fafc;
       border-color: #cbd5e1;
-      transform: translateY(-2px);
     }
 
-    /* Quick Prompts Container */
-    .prompts-container {
-      max-width: 960px;
-      margin: 0 auto;
-      background: white;
-      border: 1px solid #bfdbfe;
-      border-radius: 16px;
-      padding: 20px 24px;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.06);
-      text-align: left;
-    }
-
-    .prompts-title {
-      font-size: 0.9rem;
-      font-weight: 700;
+    .callout {
+      background: #eff6ff;
+      border-left: 4px solid var(--primary);
+      padding: 18px 24px;
+      border-radius: 8px;
+      margin: 36px auto 0;
+      max-width: 1050px;
+      font-size: 0.95rem;
       color: #1e40af;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      line-height: 1.5;
     }
 
-    .prompts-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .prompt-chip {
-      background: #f1f5f9;
-      border: 1px solid #e2e8f0;
-      color: #334155;
-      padding: 8px 14px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .prompt-chip:hover {
-      background: #2563eb;
-      color: white;
-      border-color: #2563eb;
-      transform: translateY(-1px);
-    }
-
-    /* Main Content Sections */
-    .container {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 60px 24px;
-    }
-
-    .section-header {
+    .section-title {
       text-align: center;
-      margin-bottom: 40px;
+      margin: 60px 0 30px;
     }
 
-    .section-header h2 {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #0f172a;
-      letter-spacing: -0.5px;
+    .section-title h2 {
+      font-size: 1.8rem;
+      color: var(--navy);
       margin-bottom: 8px;
     }
 
-    .section-header p {
-      color: var(--text-muted);
-      font-size: 1.05rem;
+    .section-title p {
+      color: var(--slate);
+      font-size: 1rem;
     }
 
-    .cards-grid {
+    .features {
+      max-width: 1100px;
+      margin: 0 auto 60px;
+      padding: 0 24px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 24px;
-      margin-bottom: 50px;
     }
 
     .card {
-      background: var(--card-bg);
-      padding: 26px;
-      border-radius: var(--radius);
+      background: white;
+      padding: 28px;
+      border-radius: 14px;
       border: 1px solid var(--border);
-      box-shadow: var(--shadow);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
       transition: transform 0.2s, box-shadow 0.2s;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
     }
 
     .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.06);
     }
 
     .card-icon {
       font-size: 2rem;
       margin-bottom: 14px;
+      display: inline-block;
     }
 
     .card h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
+      margin-top: 0;
       margin-bottom: 10px;
-      color: #0f172a;
+      font-size: 1.2rem;
+      color: var(--navy);
     }
 
     .card p {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      line-height: 1.55;
-      margin-bottom: 16px;
+      color: var(--slate);
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
 
-    .card-link {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.88rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      cursor: pointer;
-    }
-
-    .card-link:hover {
-      text-decoration: underline;
-    }
-
-    /* Footer */
     footer {
-      background: #0f172a;
+      margin-top: auto;
+      background: var(--navy);
       color: #94a3b8;
-      padding: 40px 24px;
-      border-top: 1px solid #1e293b;
       text-align: center;
+      padding: 28px 20px;
       font-size: 0.9rem;
+      border-top: 1px solid #1e293b;
     }
 
     footer a {
       color: #cbd5e1;
       text-decoration: none;
-      margin: 0 10px;
     }
 
     footer a:hover {
-      color: white;
-    }
-
-    .footer-links {
-      margin-bottom: 16px;
+      text-decoration: underline;
     }
 
     @media (max-width: 768px) {
-      nav {
-        padding: 12px 18px;
-      }
-      .nav-links {
-        display: none;
-      }
-      .hero h1 {
-        font-size: 2rem;
-      }
+      nav { padding: 14px 20px; }
+      nav ul { display: none; }
+      .hero h1 { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Corporate Navbar -->
+  <!-- Top Navigation -->
   <nav>
-    <a href="/" class="nav-brand">
-      <div class="brand-badge">TIPL</div>
-      <div class="brand-text">
-        <h2>Tech Industries</h2>
-        <span>Corporate Portal & AI Knowledge Hub</span>
+    <div class="brand-container">
+      <div class="brand-logo">TI</div>
+      <div>
+        <div class="brand-text">Tech Industries</div>
+        <div class="brand-sub">Motors & Engineering Solutions</div>
       </div>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#overview">Overview</a></li>
-      <li><a href="#products">Products & Motors</a></li>
-      <li><a href="#policies">HR & Policies</a></li>
-      <li><a href="/chat" class="nav-btn-chat">💬 Full Chat App</a></li>
+    </div>
+    <ul>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#policies">Policies</a></li>
+      <li><a href="/docs" target="_blank">API Docs</a></li>
+      <li><a href="/chat" class="nav-btn">Full Chat View ↗</a></li>
     </ul>
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero" id="overview">
-    <div class="hero-pill">
-      ✨ Powered by DocAnalyzer Dual-Domain RAG
-    </div>
-    <h1>Enterprise Electric Motors, Heavy Engineering & Smart Assistant</h1>
+  <div class="hero">
+    <div class="badge">🚀 Dual-Domain Enterprise Knowledge Base</div>
+    <h1>Tech Industries Corporate Portal</h1>
     <p>
-      Welcome to the official Tech Industries (TIPL) Corporate Portal. 
-      Ask anything about our industrial motors, manufacturing infrastructure, or employee HR policies via our embedded AI assistant.
+      Premier manufacturer of High Tension (HT) & Low Tension (LT) induction motors, industrial submersible pumps, and heavy engineering solutions.
     </p>
-
     <div class="hero-actions">
-      <button class="btn btn-primary" onclick="window.DocAnalyzerWidget ? window.DocAnalyzerWidget.open() : alert('Widget is loading...')">
-        💬 Chat with AI Assistant
-      </button>
-      <a href="/chat" class="btn btn-secondary">
-        🖥️ Open Fullscreen Chat App
-      </a>
+      <a href="/chat" class="btn-primary">Open Full Chat Dashboard</a>
+      <a href="#products" class="btn-secondary">Explore Products & Policies</a>
     </div>
+  </div>
 
-    <!-- Quick Prompts Widget Trigger -->
-    <div class="prompts-container">
-      <div class="prompts-title">
-        💡 Click a question below to test the AI Assistant instantly:
-      </div>
-      <div class="prompts-grid">
-        <button class="prompt-chip" onclick="askQuestion('What is the probation period leave policy at Tech Industries?')">
-          🏖️ Probation Leave Policy
-        </button>
-        <button class="prompt-chip" onclick="askQuestion('What types of LT and HT induction motors does Tech Industries manufacture?')">
-          ⚡ LT & HT Induction Motors
-        </button>
-        <button class="prompt-chip" onclick="askQuestion('What are the daily meal allowances and hotel limits for Grade B staff?')">
-          ✈️ Grade B Travel & Food Claims
-        </button>
-        <button class="prompt-chip" onclick="askQuestion('Explain the sandwich leave rule for weekends and public holidays.')">
-          🥪 Sandwich Leave Rule
-        </button>
-        <button class="prompt-chip" onclick="askQuestion('What are the working hours, grace periods, and late coming rules?')">
-          ⏰ Working Hours & Muster
-        </button>
-        <button class="prompt-chip" onclick="askQuestion('Tell me about TIPL manufacturing infrastructure and institutional approvals.')">
-          🏭 Infrastructure & Certifications
-        </button>
-      </div>
+  <!-- Integration Callout Banner -->
+  <div class="callout">
+    💡 <strong>Website Integration Live Demo:</strong> Look at the floating chat bubble in the bottom right corner! It is our embedded AI Assistant, powered by Gemini RAG. You can ask questions about Tech Industries motors, pumps, leave rules, and attendance policies. Try dragging the top-left handle of the chat window to resize it!
+  </div>
+
+  <!-- Products & Solutions -->
+  <div class="section-title" id="products">
+    <h2>Industrial Products & Engineering</h2>
+    <p>Ask the chatbot about technical specs, ratings, applications, and ISO/BIS certifications.</p>
+  </div>
+
+  <div class="features">
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h3>LT & HT Induction Motors</h3>
+      <p>High-efficiency 3-phase squirrel cage motors, high-tension motors, and flameproof series engineered for heavy industrial duty cycles.</p>
     </div>
-  </section>
-
-  <!-- Main Body Content -->
-  <div class="container">
-
-    <!-- Products & Engineering Section -->
-    <div class="section-header" id="products">
-      <h2>Industrial Products & Engineering Solutions</h2>
-      <p>Precision-engineered motors and heavy industrial equipment tested to national and global standards.</p>
+    <div class="card">
+      <div class="card-icon">💧</div>
+      <h3>Submersible & Monoblock Pumps</h3>
+      <p>Submersible borewell pumps, centrifugal monoblock units, and drainage pumps designed for municipal, agricultural, and industrial use.</p>
     </div>
-
-    <div class="cards-grid">
-      <div class="card">
-        <div>
-          <div class="card-icon">⚡</div>
-          <h3>High Tension (HT) Motors</h3>
-          <p>Slipring and squirrel cage HT motors engineered for demanding heavy-duty operations in thermal plants, mining, and cement factories.</p>
-        </div>
-        <a class="card-link" onclick="askQuestion('Tell me more about HT Motors specifications and applications.')">Ask AI about HT Motors →</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <div class="card-icon">⚙️</div>
-          <h3>Low Tension (LT) Motors</h3>
-          <p>Cast iron standard and customized frame LT induction motors delivering superior energy efficiency (IE2 / IE3) across all industries.</p>
-        </div>
-        <a class="card-link" onclick="askQuestion('What are the features of Tech Industries LT motors?')">Ask AI about LT Motors →</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <div class="card-icon">💧</div>
-          <h3>Pumping Systems</h3>
-          <p>Comprehensive pump solutions including monoblock, openwell, and deep-well submersible pumps built for agricultural and municipal operations.</p>
-        </div>
-        <a class="card-link" onclick="askQuestion('What pump solutions are offered by Tech Industries?')">Ask AI about Pumps →</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <div class="card-icon">🏭</div>
-          <h3>Lloyds Heavy Fabrication</h3>
-          <p>State-of-the-art testing bays, automated winding machinery, and institutional approvals for turnkey engineering and defense supply.</p>
-        </div>
-        <a class="card-link" onclick="askQuestion('What infrastructure and approvals does TIPL have?')">Ask AI about Infrastructure →</a>
-      </div>
+    <div class="card">
+      <div class="card-icon">🏭</div>
+      <h3>Manufacturing & Approvals</h3>
+      <p>State-of-the-art testing bays, ISO 9001:2015 quality standards, institutional approvals, and customized OEM solutions.</p>
     </div>
+  </div>
 
-    <!-- Company Policies & HR Desk Section -->
-    <div class="section-header" id="policies">
-      <h2>Employee Guidelines & Internal Policies</h2>
-      <p>Transparent corporate governance policies ingested from official TIPL policy manuals.</p>
+  <!-- Corporate Policies & Guidelines -->
+  <div class="section-title" id="policies">
+    <h2>Employee & Corporate Policies</h2>
+    <p>Ask the chatbot for exact clause numbers, grace periods, leave balances, and travel allowances.</p>
+  </div>
+
+  <div class="features">
+    <div class="card">
+      <div class="card-icon">🕒</div>
+      <h3>Attendance & Working Hours</h3>
+      <p>Shift schedules, muster attendance rules, biometric punch guidelines, and 15-minute grace period allowances.</p>
     </div>
-
-    <div class="cards-grid">
-      <div class="card">
-        <div>
-          <div class="card-icon">📋</div>
-          <h3>Attendance & Biometric Muster</h3>
-          <p>Standard working schedules, biometric punching rules, live location verification, and month-end muster regularization protocols.</p>
-        </div>
-        <a class="card-link" onclick="askQuestion('What are the attendance regularization and grace period rules?')">Ask AI about Attendance →</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <div class="card-icon">🏖️</div>
-          <h3>Leave Entitlements</h3>
-          <p>Casual leaves (CL), privilege leaves (PL), bereavement leaves, maternity benefits, and probation eligibility criteria.</p>
-        </div>
-        <a class="card-link" onclick="askQuestion('How many privilege leaves can be accumulated or carried forward?')">Ask AI about Leave Limits →</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <div class="card-icon">✈️</div>
-          <h3>Business Travel & Reimbursements</h3>
-          <p>Grade-wise travel allowances, local conveyance rates, daily food allowances (DA), and hotel accommodation limits across cities.</p>
-        </div>
-        <a class="card-link" onclick="askQuestion('What is the travel reimbursement process and submission deadline?')">Ask AI about Travel Claims →</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <div class="card-icon">🤝</div>
-          <h3>Notice Period & Separation</h3>
-          <p>Employee resignation timelines, handover formalities, asset return protocols, and full-and-final settlement procedures.</p>
-        </div>
-        <a class="card-link" onclick="askQuestion('What is the notice period requirement for confirmed employees?')">Ask AI about Notice Period →</a>
-      </div>
+    <div class="card">
+      <div class="card-icon">🏖️</div>
+      <h3>Leaves & Entitlements</h3>
+      <p>Privilege Leave (PL) accrual & carry forward limits, Casual Leave (CL), Bereavement leave, and sandwich leave conditions.</p>
     </div>
-
+    <div class="card">
+      <div class="card-icon">✈️</div>
+      <h3>Travel & Expense Claims</h3>
+      <p>Domestic and international travel policies, grade-wise hotel limits, daily meal allowances (DA), and local conveyance.</p>
+    </div>
   </div>
 
   <!-- Footer -->
   <footer>
-    <div class="footer-links">
-      <a href="/">Home</a> | 
-      <a href="/chat">Full Chat Workspace</a> | 
-      <a href="/api/health">Health Check</a>
-    </div>
-    <p>© 2026 Tech Industries (TIPL). Powered by DocAnalyzer Dual-Domain RAG Assistant.</p>
+    <p>© 2026 Tech Industries Pvt Ltd. All rights reserved. | <a href="/chat">Full Chat View</a> | <a href="/docs" target="_blank">Swagger API</a></p>
   </footer>
 
-  <!-- EMBED THE CHATBOT WIDGET -->
+  <!-- EMBED THE CHATBOT WIDGET WITH A SINGLE SCRIPT TAG -->
   <script src="/static/widget.js"></script>
-
-  <script>
-    function askQuestion(query) {
-      if (window.DocAnalyzerWidget) {
-        window.DocAnalyzerWidget.ask(query);
-      } else {
-        const launcher = document.getElementById('docanalyzer-launcher');
-        if (launcher) launcher.click();
-      }
-    }
-  </script>
 
 </body>
 </html>

@@ -94,23 +94,21 @@ async def clear_session(session_id: str):
     return {"message": f"Session {session_id} reset successfully."}
 
 
-# Serve demo corporate portal at root / and /demo
+# Serve Tech Industries demo portal at root and full chat dashboard at /chat
 @app.get("/")
-@app.get("/demo")
-async def serve_demo():
+async def serve_portal():
     demo_path = STATIC_DIR / "demo.html"
     if demo_path.exists():
         return FileResponse(str(demo_path))
-    return {"message": "DocAnalyzer Demo Portal running. demo.html not found in static directory."}
+    return {"message": "Tech Industries Demo Portal is running. demo.html not found."}
 
 
-# Serve standalone full-page chat UI at /chat
 @app.get("/chat")
 async def serve_chat():
     index_path = STATIC_DIR / "index.html"
     if index_path.exists():
         return FileResponse(str(index_path))
-    return {"message": "DocAnalyzer Full Chat UI running. index.html not found in static directory."}
+    return {"message": "Tech Industries Knowledge Assistant is running. index.html not found."}
 
 
 # Mount static directory for widget, css, and demo files

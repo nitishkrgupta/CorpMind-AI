@@ -353,7 +353,7 @@
 
       <div class="docanalyzer-header">
         <div style="padding-left: 6px;">
-          <div class="docanalyzer-header-title">Company Assistant</div>
+          <div class="docanalyzer-header-title">Tech Industries Assistant</div>
           <div class="docanalyzer-header-sub">Ask about products, policies & services</div>
         </div>
         <div class="docanalyzer-header-controls">
@@ -605,26 +605,4 @@
     msgList.appendChild(div);
     msgList.scrollTop = msgList.scrollHeight;
   }
-
-  // Global control API for host page integrations
-  window.DocAnalyzerWidget = {
-    open: function () {
-      chatWindow.style.display = 'flex';
-      input.focus();
-    },
-    close: function () {
-      chatWindow.style.display = 'none';
-    },
-    toggle: function () {
-      const isHidden = chatWindow.style.display === 'none' || !chatWindow.style.display;
-      chatWindow.style.display = isHidden ? 'flex' : 'none';
-      if (isHidden) input.focus();
-    },
-    ask: function (question) {
-      chatWindow.style.display = 'flex';
-      input.value = question;
-      input.focus();
-      form.dispatchEvent(new Event('submit', { cancelable: true }));
-    },
-  };
 })();

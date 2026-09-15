@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DocAnalyzer - Company Knowledge Assistant</title>
+  <title>Tech Industries - AI Knowledge Assistant</title>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -120,14 +120,7 @@
       100% { opacity: 1; transform: scale(1); }
     }
 
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .header-actions button,
-    .header-actions .header-btn {
+    .header-actions button {
       background: none;
       border: 1px solid var(--border);
       padding: 8px 14px;
@@ -135,15 +128,10 @@
       font-size: 0.85rem;
       color: var(--text-muted);
       cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
       transition: all 0.2s;
     }
 
-    .header-actions button:hover,
-    .header-actions .header-btn:hover {
+    .header-actions button:hover {
       background: var(--bg);
       color: var(--text);
       border-color: #cbd5e1;
@@ -376,17 +364,17 @@
     <!-- Header -->
     <div class="chat-header">
       <div class="header-info">
-        <div class="bot-avatar">DA</div>
+        <div class="bot-avatar">TI</div>
         <div class="header-text">
-          <h1>DocAnalyzer Assistant</h1>
+          <h1>Tech Industries AI Assistant</h1>
           <div class="status-badge">
             <div class="status-dot"></div>
-            <span>Online | Company Knowledge Base</span>
+            <span>Online | Dual-Domain Knowledge Base</span>
           </div>
         </div>
       </div>
       <div class="header-actions">
-        <a href="/" class="header-btn" title="Back to Corporate Demo Website">🌐 Demo Website</a>
+        <a href="/" style="text-decoration:none;"><button type="button" title="Go to Tech Industries Corporate Portal">🌐 Portal Home</button></a>
         <button id="wideToggleBtn" onclick="toggleWideView()" title="Expand or shrink chat layout for easier reading">⛶ Expand View</button>
         <button onclick="resetSession()">New Chat</button>
       </div>
@@ -395,13 +383,14 @@
     <!-- Message Stream -->
     <div class="chat-messages" id="chatMessages">
       <div class="welcome-card">
-        <h3>👋 Welcome to the Company Assistant!</h3>
-        <p>I can instantly answer questions regarding company policies, attendance, working hours, leaves, and travel entitlements with exact citations.</p>
+        <h3>👋 Welcome to Tech Industries Knowledge Assistant!</h3>
+        <p>I can instantly answer questions regarding Tech Industries products (LT & HT induction motors, pumps, specifications) as well as internal corporate policies (attendance, leaves, and travel entitlements) with exact citations.</p>
         <div class="suggestion-pills">
-          <div class="pill" onclick="sendQuick('What are the working hours and grace period for late coming?')">🕒 Working Hours & Grace Period</div>
+          <div class="pill" onclick="sendQuick('What types of LT and HT induction motors does Tech Industries manufacture?')">⚡ LT & HT Motors</div>
+          <div class="pill" onclick="sendQuick('What kinds of industrial pumps are available at Tech Industries?')">💧 Submersible & Monoblock Pumps</div>
           <div class="pill" onclick="sendQuick('What is the privilege leave entitlement and carry forward policy?')">🏖️ Privilege Leave Policy</div>
+          <div class="pill" onclick="sendQuick('What are the working hours and grace period for late coming?')">🕒 Working Hours & Grace Period</div>
           <div class="pill" onclick="sendQuick('What are the hotel allowances for Band B in Class A cities?')">🏨 Travel & Hotel Allowance</div>
-          <div class="pill" onclick="sendQuick('How does sandwich leave work?')">🥪 Sandwich Leave Rules</div>
         </div>
       </div>
     </div>
@@ -413,7 +402,7 @@
           <input 
             type="text" 
             id="userInput" 
-            placeholder="Ask anything about company policies..." 
+            placeholder="Ask anything about Tech Industries products, motors, or company policies..." 
             autocomplete="off"
           />
           <button type="submit" id="sendBtn" class="send-btn" title="Send message">
