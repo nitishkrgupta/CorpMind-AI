@@ -3,133 +3,622 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Corporate Portal - Techno Industries (Demo)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Techno Industries (TIPL) - Corporate Portal & Knowledge Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: #f8fafc;
-      color: #1e293b;
+    :root {
+      --primary: #1d4ed8;
+      --primary-hover: #1e40af;
+      --primary-light: #eff6ff;
+      --accent: #f59e0b;
+      --dark-nav: #0f172a;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
     }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Navigation Bar */
     nav {
-      background: #0f172a;
+      background: var(--dark-nav);
       color: white;
-      padding: 16px 32px;
+      padding: 14px 36px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
-    nav .brand {
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 6px 12px;
+      border-radius: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-text h2 {
+      font-size: 1.15rem;
       font-weight: 700;
-      font-size: 1.25rem;
-      letter-spacing: -0.5px;
+      line-height: 1.2;
     }
-    nav ul {
+
+    .brand-text span {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      font-weight: 400;
+    }
+
+    .nav-links {
       list-style: none;
       display: flex;
-      gap: 24px;
-      margin: 0;
-      padding: 0;
+      align-items: center;
+      gap: 22px;
     }
-    nav a {
+
+    .nav-links a {
       color: #cbd5e1;
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.2s;
     }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .nav-btn-chat {
+      background: #2563eb;
+      color: white !important;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      transition: all 0.2s !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn-chat:hover {
+      background: #1d4ed8 !important;
+      transform: translateY(-1px);
+    }
+
+    .nav-btn-docs {
+      border: 1px solid #475569;
+      padding: 7px 14px;
+      border-radius: 8px;
+    }
+
+    .nav-btn-docs:hover {
+      border-color: #94a3b8;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Hero Section */
     .hero {
-      padding: 80px 32px;
-      text-align: center;
       background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
-      border-bottom: 1px solid #e2e8f0;
+      padding: 70px 24px 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
     }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary-light);
+      border: 1px solid #bfdbfe;
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
     .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 16px;
+      font-size: 2.8rem;
+      font-weight: 800;
       color: #0f172a;
+      letter-spacing: -0.8px;
+      max-width: 860px;
+      margin: 0 auto 18px;
+      line-height: 1.2;
     }
+
     .hero p {
       font-size: 1.15rem;
-      color: #64748b;
-      max-width: 650px;
-      margin: 0 auto 28px;
-      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 32px;
     }
-    .features {
-      max-width: 1000px;
-      margin: 60px auto;
-      padding: 0 24px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 24px;
     }
-    .card {
+
+    .btn {
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
       background: white;
-      padding: 24px;
-      border-radius: 12px;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
     }
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 8px;
-      font-size: 1.1rem;
+
+    .btn-secondary:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      transform: translateY(-2px);
     }
-    .card p {
-      color: #64748b;
-      font-size: 0.95rem;
-      line-height: 1.5;
+
+    /* Quick Prompts Container */
+    .prompts-container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: white;
+      border: 1px solid #bfdbfe;
+      border-radius: 16px;
+      padding: 20px 24px;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.06);
+      text-align: left;
     }
-    .callout {
-      background: #eff6ff;
-      border-left: 4px solid #2563eb;
-      padding: 16px 20px;
-      border-radius: 4px;
-      margin: 30px auto;
-      max-width: 950px;
-      font-size: 0.95rem;
+
+    .prompts-title {
+      font-size: 0.9rem;
+      font-weight: 700;
       color: #1e40af;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .prompts-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .prompt-chip {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      color: #334155;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .prompt-chip:hover {
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+      transform: translateY(-1px);
+    }
+
+    /* Main Content Sections */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 50px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 26px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+    .card-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .card-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Integration Callout Section */
+    .embed-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+      margin: 40px 0;
+    }
+
+    .embed-banner h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .embed-banner p {
+      color: #94a3b8;
+      font-size: 0.98rem;
+      margin-bottom: 20px;
+      max-width: 780px;
+    }
+
+    .code-box {
+      background: #020617;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.88rem;
+      color: #38bdf8;
+      overflow-x: auto;
+      margin-bottom: 18px;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 40px 24px;
+      border-top: 1px solid #1e293b;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    .footer-links {
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 12px 18px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Top Corporate Navbar -->
   <nav>
-    <div class="brand">Industries Corporate Portal</div>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Policies</a></li>
-      <li><a href="#">Products</a></li>
-      <li><a href="#">HR Desk</a></li>
+    <a href="/" class="nav-brand">
+      <div class="brand-badge">TIPL</div>
+      <div class="brand-text">
+        <h2>Techno Industries</h2>
+        <span>Corporate Portal & AI Knowledge Hub</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#products">Products & Motors</a></li>
+      <li><a href="#policies">HR & Policies</a></li>
+      <li><a href="/chat" class="nav-btn-chat">💬 Full Chat App</a></li>
+      <li><a href="/docs" class="nav-btn-docs">⚡ API Docs</a></li>
     </ul>
   </nav>
 
-  <div class="hero">
-    <h1>Employee & Customer Portal</h1>
-    <p>Welcome to our company portal. Notice the floating chat bubble in the bottom right corner — that is our embedded Document Assistant!</p>
+  <!-- Hero Section -->
+  <section class="hero" id="overview">
+    <div class="hero-pill">
+      ✨ Powered by DocAnalyzer Dual-Domain RAG
+    </div>
+    <h1>Enterprise Electric Motors, Heavy Engineering & Smart Assistant</h1>
+    <p>
+      Welcome to the official Techno Industries (TIPL) Corporate Portal. 
+      Ask anything about our industrial motors, manufacturing infrastructure, or employee HR policies via our embedded AI assistant.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn btn-primary" onclick="window.DocAnalyzerWidget ? window.DocAnalyzerWidget.open() : alert('Widget is loading...')">
+        💬 Chat with AI Assistant
+      </button>
+      <a href="/chat" class="btn btn-secondary">
+        🖥️ Open Fullscreen Chat App
+      </a>
+      <a href="/docs" class="btn btn-secondary" target="_blank">
+        📖 Swagger API Specs
+      </a>
+    </div>
+
+    <!-- Quick Prompts Widget Trigger -->
+    <div class="prompts-container">
+      <div class="prompts-title">
+        💡 Click a question below to test the AI Assistant instantly:
+      </div>
+      <div class="prompts-grid">
+        <button class="prompt-chip" onclick="askQuestion('What is the probation period leave policy at Techno Industries?')">
+          🏖️ Probation Leave Policy
+        </button>
+        <button class="prompt-chip" onclick="askQuestion('What types of LT and HT induction motors does Techno Industries manufacture?')">
+          ⚡ LT & HT Induction Motors
+        </button>
+        <button class="prompt-chip" onclick="askQuestion('What are the daily meal allowances and hotel limits for Grade B staff?')">
+          ✈️ Grade B Travel & Food Claims
+        </button>
+        <button class="prompt-chip" onclick="askQuestion('Explain the sandwich leave rule for weekends and public holidays.')">
+          🥪 Sandwich Leave Rule
+        </button>
+        <button class="prompt-chip" onclick="askQuestion('What are the working hours, grace periods, and late coming rules?')">
+          ⏰ Working Hours & Muster
+        </button>
+        <button class="prompt-chip" onclick="askQuestion('Tell me about TIPL manufacturing infrastructure and institutional approvals.')">
+          🏭 Infrastructure & Certifications
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Body Content -->
+  <div class="container">
+
+    <!-- Products & Engineering Section -->
+    <div class="section-header" id="products">
+      <h2>Industrial Products & Engineering Solutions</h2>
+      <p>Precision-engineered motors and heavy industrial equipment tested to national and global standards.</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div>
+          <div class="card-icon">⚡</div>
+          <h3>High Tension (HT) Motors</h3>
+          <p>Slipring and squirrel cage HT motors engineered for demanding heavy-duty operations in thermal plants, mining, and cement factories.</p>
+        </div>
+        <a class="card-link" onclick="askQuestion('Tell me more about HT Motors specifications and applications.')">Ask AI about HT Motors →</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="card-icon">⚙️</div>
+          <h3>Low Tension (LT) Motors</h3>
+          <p>Cast iron standard and customized frame LT induction motors delivering superior energy efficiency (IE2 / IE3) across all industries.</p>
+        </div>
+        <a class="card-link" onclick="askQuestion('What are the features of Techno Industries LT motors?')">Ask AI about LT Motors →</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="card-icon">💧</div>
+          <h3>Pumping Systems</h3>
+          <p>Comprehensive pump solutions including monoblock, openwell, and deep-well submersible pumps built for agricultural and municipal operations.</p>
+        </div>
+        <a class="card-link" onclick="askQuestion('What pump solutions are offered by Techno Industries?')">Ask AI about Pumps →</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="card-icon">🏭</div>
+          <h3>Lloyds Heavy Fabrication</h3>
+          <p>State-of-the-art testing bays, automated winding machinery, and institutional approvals for turnkey engineering and defense supply.</p>
+        </div>
+        <a class="card-link" onclick="askQuestion('What infrastructure and approvals does TIPL have?')">Ask AI about Infrastructure →</a>
+      </div>
+    </div>
+
+    <!-- Company Policies & HR Desk Section -->
+    <div class="section-header" id="policies">
+      <h2>Employee Guidelines & Internal Policies</h2>
+      <p>Transparent corporate governance policies ingested from official TIPL policy manuals.</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div>
+          <div class="card-icon">📋</div>
+          <h3>Attendance & Biometric Muster</h3>
+          <p>Standard working schedules, biometric punching rules, live location verification, and month-end muster regularization protocols.</p>
+        </div>
+        <a class="card-link" onclick="askQuestion('What are the attendance regularization and grace period rules?')">Ask AI about Attendance →</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="card-icon">🏖️</div>
+          <h3>Leave Entitlements</h3>
+          <p>Casual leaves (CL), privilege leaves (PL), bereavement leaves, maternity benefits, and probation eligibility criteria.</p>
+        </div>
+        <a class="card-link" onclick="askQuestion('How many privilege leaves can be accumulated or carried forward?')">Ask AI about Leave Limits →</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="card-icon">✈️</div>
+          <h3>Business Travel & Reimbursements</h3>
+          <p>Grade-wise travel allowances, local conveyance rates, daily food allowances (DA), and hotel accommodation limits across cities.</p>
+        </div>
+        <a class="card-link" onclick="askQuestion('What is the travel reimbursement process and submission deadline?')">Ask AI about Travel Claims →</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="card-icon">🤝</div>
+          <h3>Notice Period & Separation</h3>
+          <p>Employee resignation timelines, handover formalities, asset return protocols, and full-and-final settlement procedures.</p>
+        </div>
+        <a class="card-link" onclick="askQuestion('What is the notice period requirement for confirmed employees?')">Ask AI about Notice Period →</a>
+      </div>
+    </div>
+
+    <!-- Website Integration Banner -->
+    <div class="embed-banner">
+      <h3>🚀 Embed This AI Widget on Any Website</h3>
+      <p>
+        You can drop this interactive assistant onto any corporate website, intranet, or customer portal with just a single script tag:
+      </p>
+      <div class="code-box">
+&lt;!-- Include the DocAnalyzer Floating Widget --&gt;
+&lt;script src="/static/widget.js"&gt;&lt;/script&gt;
+      </div>
+      <p>
+        The widget automatically connects to the backend API, supports real-time resizing, and delivers grounded answers with citations.
+      </p>
+    </div>
+
   </div>
 
-  <div class="callout">
-    💡 <strong>Website Integration Demo:</strong> This sample company page demonstrates how easy it is to add the Document assistant to <em>any</em> website by simply adding a single <code>&lt;script&gt;</code> tag!
-  </div>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a> | 
+      <a href="/chat">Full Chat Workspace</a> | 
+      <a href="/docs">Swagger API Documentation</a> | 
+      <a href="/api/health">Health Check</a>
+    </div>
+    <p>© 2026 Techno Industries (TIPL). Powered by DocAnalyzer Dual-Domain RAG Assistant.</p>
+  </footer>
 
-  <div class="features">
-    <div class="card">
-      <h3>📋 Company Attendance</h3>
-      <p>Working hours, muster requirements, biometric and live location tracking guidelines.</p>
-    </div>
-    <div class="card">
-      <h3>✈️ Business Travel & Claims</h3>
-      <p>Grade-specific transport limits, daily meal allowances, and hotel reimbursement rules.</p>
-    </div>
-    <div class="card">
-      <h3>🏖️ Leave Entitlements</h3>
-      <p>Casual leaves, privilege leaves, bereavement leaves, and sandwich leave policy details.</p>
-    </div>
-  </div>
-
-  <!-- EMBED THE CHATBOT WIDGET WITH A SINGLE SCRIPT TAG -->
+  <!-- EMBED THE CHATBOT WIDGET -->
   <script src="/static/widget.js"></script>
+
+  <script>
+    function askQuestion(query) {
+      if (window.DocAnalyzerWidget) {
+        window.DocAnalyzerWidget.ask(query);
+      } else {
+        const launcher = document.getElementById('docanalyzer-launcher');
+        if (launcher) launcher.click();
+      }
+    }
+  </script>
 
 </body>
 </html>

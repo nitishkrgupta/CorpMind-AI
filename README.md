@@ -87,9 +87,9 @@ python -m src.ingest
 ```bash
 python app.py
 ```
-- **Full Chat UI**: http://localhost:8000
-- **Widget Demo**: http://localhost:8000/static/demo.html
-- **Interactive Swagger Docs**: http://localhost:8000/docs
+- **Corporate Demo Portal & Embedded Widget**: `http://localhost:8000` (or `/demo`)
+- **Full-Screen Chat Workspace**: `http://localhost:8000/chat`
+- **Interactive Swagger API Docs**: `http://localhost:8000/docs`
 
 ---
 

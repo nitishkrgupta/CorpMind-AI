@@ -120,7 +120,14 @@
       100% { opacity: 1; transform: scale(1); }
     }
 
-    .header-actions button {
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-actions button,
+    .header-actions .header-btn {
       background: none;
       border: 1px solid var(--border);
       padding: 8px 14px;
@@ -128,10 +135,15 @@
       font-size: 0.85rem;
       color: var(--text-muted);
       cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       transition: all 0.2s;
     }
 
-    .header-actions button:hover {
+    .header-actions button:hover,
+    .header-actions .header-btn:hover {
       background: var(--bg);
       color: var(--text);
       border-color: #cbd5e1;
@@ -374,6 +386,7 @@
         </div>
       </div>
       <div class="header-actions">
+        <a href="/" class="header-btn" title="Back to Corporate Demo Website">🌐 Demo Website</a>
         <button id="wideToggleBtn" onclick="toggleWideView()" title="Expand or shrink chat layout for easier reading">⛶ Expand View</button>
         <button onclick="resetSession()">New Chat</button>
       </div>
