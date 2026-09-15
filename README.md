@@ -89,7 +89,6 @@ python app.py
 ```
 - **Corporate Demo Portal & Embedded Widget**: `http://localhost:8000` (or `/demo`)
 - **Full-Screen Chat Workspace**: `http://localhost:8000/chat`
-- **Interactive Swagger API Docs**: `http://localhost:8000/docs`
 
 ---
 
@@ -133,7 +132,7 @@ Once deployed on Render (e.g. `https://docanalyzer-ai.onrender.com`), add this s
   src="https://docanalyzer-ai.onrender.com/static/widget.js" 
   data-api-url="https://docanalyzer-ai.onrender.com"
   data-title="Company Assistant"
-  data-greeting="Hello! Welcome to Techno Industries. How can I assist you today?">
+  data-greeting="Hello! Welcome to Tech Industries. How can I assist you today?">
 </script>
 ```
 

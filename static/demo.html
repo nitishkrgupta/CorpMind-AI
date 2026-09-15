@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Techno Industries (TIPL) - Corporate Portal & Knowledge Assistant</title>
+  <title>Tech Industries (TIPL) - Corporate Portal & Knowledge Assistant</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -113,17 +113,6 @@
     .nav-btn-chat:hover {
       background: #1d4ed8 !important;
       transform: translateY(-1px);
-    }
-
-    .nav-btn-docs {
-      border: 1px solid #475569;
-      padding: 7px 14px;
-      border-radius: 8px;
-    }
-
-    .nav-btn-docs:hover {
-      border-color: #94a3b8;
-      background: rgba(255, 255, 255, 0.05);
     }
 
     /* Hero Section */
@@ -344,41 +333,6 @@
       text-decoration: underline;
     }
 
-    /* Integration Callout Section */
-    .embed-banner {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      color: white;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
-      margin: 40px 0;
-    }
-
-    .embed-banner h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .embed-banner p {
-      color: #94a3b8;
-      font-size: 0.98rem;
-      margin-bottom: 20px;
-      max-width: 780px;
-    }
-
-    .code-box {
-      background: #020617;
-      border: 1px solid #334155;
-      border-radius: 8px;
-      padding: 14px 18px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 0.88rem;
-      color: #38bdf8;
-      overflow-x: auto;
-      margin-bottom: 18px;
-    }
-
     /* Footer */
     footer {
       background: #0f172a;
@@ -423,7 +377,7 @@
     <a href="/" class="nav-brand">
       <div class="brand-badge">TIPL</div>
       <div class="brand-text">
-        <h2>Techno Industries</h2>
+        <h2>Tech Industries</h2>
         <span>Corporate Portal & AI Knowledge Hub</span>
       </div>
     </a>
@@ -432,7 +386,6 @@
       <li><a href="#products">Products & Motors</a></li>
       <li><a href="#policies">HR & Policies</a></li>
       <li><a href="/chat" class="nav-btn-chat">💬 Full Chat App</a></li>
-      <li><a href="/docs" class="nav-btn-docs">⚡ API Docs</a></li>
     </ul>
   </nav>
 
@@ -443,7 +396,7 @@
     </div>
     <h1>Enterprise Electric Motors, Heavy Engineering & Smart Assistant</h1>
     <p>
-      Welcome to the official Techno Industries (TIPL) Corporate Portal. 
+      Welcome to the official Tech Industries (TIPL) Corporate Portal. 
       Ask anything about our industrial motors, manufacturing infrastructure, or employee HR policies via our embedded AI assistant.
     </p>
 
@@ -454,9 +407,6 @@
       <a href="/chat" class="btn btn-secondary">
         🖥️ Open Fullscreen Chat App
       </a>
-      <a href="/docs" class="btn btn-secondary" target="_blank">
-        📖 Swagger API Specs
-      </a>
     </div>
 
     <!-- Quick Prompts Widget Trigger -->
@@ -465,10 +415,10 @@
         💡 Click a question below to test the AI Assistant instantly:
       </div>
       <div class="prompts-grid">
-        <button class="prompt-chip" onclick="askQuestion('What is the probation period leave policy at Techno Industries?')">
+        <button class="prompt-chip" onclick="askQuestion('What is the probation period leave policy at Tech Industries?')">
           🏖️ Probation Leave Policy
         </button>
-        <button class="prompt-chip" onclick="askQuestion('What types of LT and HT induction motors does Techno Industries manufacture?')">
+        <button class="prompt-chip" onclick="askQuestion('What types of LT and HT induction motors does Tech Industries manufacture?')">
           ⚡ LT & HT Induction Motors
         </button>
         <button class="prompt-chip" onclick="askQuestion('What are the daily meal allowances and hotel limits for Grade B staff?')">
@@ -512,7 +462,7 @@
           <h3>Low Tension (LT) Motors</h3>
           <p>Cast iron standard and customized frame LT induction motors delivering superior energy efficiency (IE2 / IE3) across all industries.</p>
         </div>
-        <a class="card-link" onclick="askQuestion('What are the features of Techno Industries LT motors?')">Ask AI about LT Motors →</a>
+        <a class="card-link" onclick="askQuestion('What are the features of Tech Industries LT motors?')">Ask AI about LT Motors →</a>
       </div>
 
       <div class="card">
@@ -521,7 +471,7 @@
           <h3>Pumping Systems</h3>
           <p>Comprehensive pump solutions including monoblock, openwell, and deep-well submersible pumps built for agricultural and municipal operations.</p>
         </div>
-        <a class="card-link" onclick="askQuestion('What pump solutions are offered by Techno Industries?')">Ask AI about Pumps →</a>
+        <a class="card-link" onclick="askQuestion('What pump solutions are offered by Tech Industries?')">Ask AI about Pumps →</a>
       </div>
 
       <div class="card">
@@ -578,21 +528,6 @@
       </div>
     </div>
 
-    <!-- Website Integration Banner -->
-    <div class="embed-banner">
-      <h3>🚀 Embed This AI Widget on Any Website</h3>
-      <p>
-        You can drop this interactive assistant onto any corporate website, intranet, or customer portal with just a single script tag:
-      </p>
-      <div class="code-box">
-&lt;!-- Include the DocAnalyzer Floating Widget --&gt;
-&lt;script src="/static/widget.js"&gt;&lt;/script&gt;
-      </div>
-      <p>
-        The widget automatically connects to the backend API, supports real-time resizing, and delivers grounded answers with citations.
-      </p>
-    </div>
-
   </div>
 
   <!-- Footer -->
@@ -600,10 +535,9 @@
     <div class="footer-links">
       <a href="/">Home</a> | 
       <a href="/chat">Full Chat Workspace</a> | 
-      <a href="/docs">Swagger API Documentation</a> | 
       <a href="/api/health">Health Check</a>
     </div>
-    <p>© 2026 Techno Industries (TIPL). Powered by DocAnalyzer Dual-Domain RAG Assistant.</p>
+    <p>© 2026 Tech Industries (TIPL). Powered by DocAnalyzer Dual-Domain RAG Assistant.</p>
   </footer>
 
   <!-- EMBED THE CHATBOT WIDGET -->

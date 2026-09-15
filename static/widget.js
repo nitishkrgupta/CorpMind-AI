@@ -367,7 +367,7 @@
       </div>
       <div class="docanalyzer-messages" id="docanalyzer-msg-list">
         <div class="docanalyzer-msg docanalyzer-msg-bot">
-          Hello! Welcome to Techno Industries. How can I assist you with our products, specifications, or company policies today?
+          Hello! Welcome to Tech Industries. How can I assist you with our products, specifications, or company policies today?
         </div>
       </div>
       <form class="docanalyzer-input-area" id="docanalyzer-form">
