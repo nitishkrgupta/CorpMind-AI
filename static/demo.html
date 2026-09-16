@@ -25,6 +25,13 @@
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
     body {
       background: var(--bg);
       color: #1e293b;
@@ -34,6 +41,9 @@
     }
 
     nav {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
       background: var(--navy);
       color: white;
       padding: 16px 36px;
@@ -118,7 +128,9 @@
     }
 
     .hero {
-      padding: 70px 32px 60px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: clamp(48px, 9vw, 80px) clamp(16px, 4vw, 36px) clamp(36px, 6vw, 60px);
       text-align: center;
       background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
       border-bottom: 1px solid var(--border);
@@ -137,23 +149,25 @@
     }
 
     .hero h1 {
-      font-size: 2.75rem;
-      margin-bottom: 16px;
+      font-size: clamp(1.85rem, 5.5vw, 2.75rem);
+      margin-bottom: 14px;
       color: var(--navy);
-      letter-spacing: -1px;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
     }
 
     .hero p {
-      font-size: 1.15rem;
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
       color: var(--slate);
       max-width: 720px;
-      margin: 0 auto 28px;
+      margin: 0 auto 24px;
       line-height: 1.6;
     }
 
     .hero-actions {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 14px;
       margin-top: 10px;
     }
@@ -195,48 +209,57 @@
     .callout {
       background: #eff6ff;
       border-left: 4px solid var(--primary);
-      padding: 18px 24px;
+      padding: clamp(14px, 3vw, 18px) clamp(16px, 3.5vw, 24px);
       border-radius: 8px;
-      margin: 36px auto 0;
+      margin: 32px auto 0;
+      width: min(1050px, calc(100% - 32px));
       max-width: 1050px;
-      font-size: 0.95rem;
+      box-sizing: border-box;
+      font-size: clamp(0.88rem, 2vw, 0.95rem);
       color: #1e40af;
       box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     .section-title {
+      width: 100%;
+      box-sizing: border-box;
       text-align: center;
-      margin: 60px 0 30px;
+      margin: clamp(40px, 7vw, 60px) 0 clamp(20px, 4vw, 30px);
+      padding: 0 16px;
     }
 
     .section-title h2 {
-      font-size: 1.8rem;
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
       color: var(--navy);
       margin-bottom: 8px;
     }
 
     .section-title p {
       color: var(--slate);
-      font-size: 1rem;
+      font-size: clamp(0.9rem, 2.2vw, 1rem);
     }
 
     .features {
+      width: min(1100px, calc(100% - 32px));
       max-width: 1100px;
-      margin: 0 auto 60px;
-      padding: 0 24px;
+      box-sizing: border-box;
+      margin: 0 auto clamp(40px, 6vw, 60px);
+      padding: 0;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: clamp(16px, 3vw, 24px);
     }
 
     .card {
       background: white;
-      padding: 28px;
+      padding: clamp(20px, 4vw, 28px);
       border-radius: 14px;
       border: 1px solid var(--border);
       box-shadow: 0 4px 12px rgba(0,0,0,0.03);
       transition: transform 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+      width: 100%;
     }
 
     .card:hover {
@@ -264,6 +287,8 @@
     }
 
     footer {
+      width: 100%;
+      box-sizing: border-box;
       margin-top: auto;
       background: var(--navy);
       color: #94a3b8;
@@ -282,10 +307,103 @@
       text-decoration: underline;
     }
 
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+      transition: background 0.2s;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-toggle:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
     @media (max-width: 768px) {
-      nav { padding: 14px 20px; }
-      nav ul { display: none; }
-      .hero h1 { font-size: 2rem; }
+      nav {
+        padding: 12px 18px;
+        width: 100%;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--navy);
+        flex-direction: column;
+        padding: 16px 20px 20px;
+        gap: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+      }
+      nav ul.menu-active {
+        display: flex;
+      }
+      nav ul li {
+        width: 100%;
+      }
+      nav ul li a {
+        display: block;
+        padding: 10px 14px;
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+      nav ul li a:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+      nav .nav-btn {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        padding: 12px;
+      }
+      .callout {
+        margin: 24px auto 0;
+        width: calc(100% - 32px);
+      }
+      .features {
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - 32px);
+        margin: 0 auto clamp(30px, 5vw, 40px);
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: clamp(36px, 8vw, 50px) 16px clamp(28px, 6vw, 40px);
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .btn-primary, .btn-secondary {
+        text-align: center;
+        width: 100%;
+        padding: 12px 18px;
+      }
+      .callout {
+        margin: 20px auto 0;
+        width: calc(100% - 24px);
+      }
+      .features {
+        width: calc(100% - 24px);
+      }
     }
   </style>
 </head>
@@ -300,7 +418,14 @@
         <div class="brand-sub">Motors & Engineering Solutions</div>
       </div>
     </div>
-    <ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+    <ul id="navMenu">
       <li><a href="#products">Products</a></li>
       <li><a href="#policies">Policies</a></li>
       <li><a href="/chat" class="nav-btn">Full Chat View ↗</a></li>
@@ -380,6 +505,21 @@
 
   <!-- EMBED THE CHATBOT WIDGET WITH A SINGLE SCRIPT TAG -->
   <script src="/static/widget.js"></script>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('menu-active');
+      });
+      navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('menu-active');
+        });
+      });
+    }
+  </script>
 
 </body>
 </html>

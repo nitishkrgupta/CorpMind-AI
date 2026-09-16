@@ -333,6 +333,93 @@
       background: #94a3b8;
       cursor: not-allowed;
     }
+
+    /* Mobile Responsiveness for Phones & Small Screens */
+    @media (max-width: 600px) {
+      #docanalyzer-widget-container {
+        bottom: 16px !important;
+        right: 16px !important;
+      }
+
+      #docanalyzer-launcher {
+        width: 52px !important;
+        height: 52px !important;
+        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4) !important;
+      }
+
+      #docanalyzer-launcher svg {
+        width: 24px !important;
+        height: 24px !important;
+      }
+
+      #docanalyzer-chat-window {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        width: 100vw !important;
+        height: 100% !important;
+        height: 100dvh !important;
+        max-width: 100% !important;
+        max-width: 100vw !important;
+        max-height: 100% !important;
+        max-height: 100dvh !important;
+        border-radius: 0 !important;
+        border: none !important;
+        margin: 0 !important;
+        z-index: 1000000 !important;
+        box-shadow: none !important;
+      }
+
+      .docanalyzer-resizer {
+        display: none !important;
+      }
+
+      #docanalyzer-expand {
+        display: none !important;
+      }
+
+      .docanalyzer-header {
+        padding: 14px 16px !important;
+        border-radius: 0 !important;
+      }
+
+      .docanalyzer-header-title {
+        font-size: 0.95rem !important;
+      }
+
+      .docanalyzer-header-sub {
+        font-size: 0.72rem !important;
+      }
+
+      .docanalyzer-messages {
+        padding: 12px !important;
+        gap: 10px !important;
+      }
+
+      .docanalyzer-msg {
+        max-width: 92% !important;
+        padding: 10px 14px !important;
+        font-size: 0.86rem !important;
+        line-height: 1.5 !important;
+      }
+
+      .docanalyzer-input-area {
+        padding: 10px 12px max(10px, env(safe-area-inset-bottom)) !important;
+      }
+
+      .docanalyzer-input-area input {
+        font-size: 16px !important; /* Prevents auto-zoom on mobile iOS */
+        padding: 9px 14px !important;
+      }
+
+      .docanalyzer-send-btn {
+        width: 38px !important;
+        height: 38px !important;
+      }
+    }
   `;
   document.head.appendChild(style);
 
@@ -404,18 +491,27 @@
   let savedWidth = localStorage.getItem('docanalyzer_widget_width') || '400px';
   let savedHeight = localStorage.getItem('docanalyzer_widget_height') || '580px';
 
-  // Apply saved custom size
-  if (localStorage.getItem('docanalyzer_widget_width')) {
-    chatWindow.style.width = savedWidth;
+  // Apply saved custom size only on desktop screens (>600px)
+  function applyWidgetDimensions() {
+    if (window.innerWidth > 600) {
+      if (localStorage.getItem('docanalyzer_widget_width')) {
+        chatWindow.style.width = savedWidth;
+      }
+      if (localStorage.getItem('docanalyzer_widget_height')) {
+        chatWindow.style.height = savedHeight;
+      }
+    } else {
+      chatWindow.style.width = '';
+      chatWindow.style.height = '';
+    }
   }
-  if (localStorage.getItem('docanalyzer_widget_height')) {
-    chatWindow.style.height = savedHeight;
-  }
+  applyWidgetDimensions();
+  window.addEventListener('resize', applyWidgetDimensions);
 
   launcher.addEventListener('click', () => {
     const isHidden = chatWindow.style.display === 'none' || !chatWindow.style.display;
     chatWindow.style.display = isHidden ? 'flex' : 'none';
-    if (isHidden) input.focus();
+    if (isHidden && window.innerWidth > 600) input.focus();
   });
 
   closeBtn.addEventListener('click', () => {
